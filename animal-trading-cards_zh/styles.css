@@ -1,1 +1,27 @@
 /* 添加 CSS */
+.tips {
+    font-style: italic;
+}
+.animal-label {
+    font-weight: bold;
+}
+.li-style {
+    list-style-type: none;
+}
+.ul-style {
+    padding-left: 0;
+}
+.main-box {
+    width: 320px;
+
+    /*margin: 10px;*/
+    padding: 10px;
+    border: groove;
+    box-shadow: 5px 5px #e6e6e6;
+}
+.desc-box {
+    /*margin: 10px;*/
+    font-size: smaller;
+    width: 300px;
+    border: groove;
+}
