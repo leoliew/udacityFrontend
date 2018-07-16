@@ -22,7 +22,7 @@ body {
 .main-box {
     width: 320px;
     border: solid #ccc 1px;
-    box-shadow: 2px 4px 2px #ccc
+    box-shadow: 5px 5px 5px #ccc
 }
 .desc-box {
     margin: 10px;
