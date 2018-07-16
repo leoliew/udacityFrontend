@@ -1,0 +1,39 @@
+/* 添加 CSS */
+body {
+    font-family: Verdana, sans-serif;
+}
+
+.tips {
+    font-style: italic;
+}
+.animal-label {
+    font-weight: bold;
+}
+.li-style {
+    list-style-type: none;
+}
+.ul-style {
+    padding-left: 10px;
+}
+.img {
+    display: block;
+    margin: auto;
+}
+.main-box {
+    width: 320px;
+    border: solid #ccc 1px;
+    box-shadow: 2px 4px 2px #ccc
+}
+.desc-box {
+    margin: 10px;
+    width: 300px;
+    border: solid #ccc 1px;
+}
+
+p {
+    padding-left: 10px;
+}
+
+h3 {
+    padding-left: 20px;
+}
