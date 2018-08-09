@@ -62,6 +62,7 @@ typings/
 
 # ide editor
 .idea
+*.iml
 
 # mac store file
 .Ds_Store

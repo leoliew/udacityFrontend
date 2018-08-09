@@ -1,0 +1,105 @@
+
+
+/*
+ These are the default styles. No need to change these.
+ */
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.title {
+    font-size: 2.5em;
+    text-align: center;
+}
+
+.box {
+    min-height: 150px;
+}
+
+.dark_blue {
+    background-color: #2A457A;
+    color: #efefef;
+}
+
+.light_blue {
+    background-color: #099DD9;
+}
+
+.green {
+    background-color: #0C8542;
+}
+
+.lime {
+    background-color: rgb(179, 210, 52);
+}
+
+.seafoam {
+    background-color: rgb(77, 190, 161);
+}
+
+.red {
+    background-color: #EC1D3B;
+}
+
+.orange {
+    background-color: #F79420;
+}
+
+/*
+These are the responsive styles. Throw some breakpoints in here!
+*/
+.container {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.color {
+    padding-top: 150px;
+    padding-bottom: 200px;
+    width: 20%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.main {
+    width: 80%;
+}
+
+.feature {
+    width: 33.33%;
+    min-height: 150px;
+}
+
+.box {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+/*.red {*/
+    /*width: 33.33%;*/
+/*}*/
+
+/*.orange {*/
+    /*width: 66.66%*/
+/*}*/
+
+@media screen and (min-width: 450px) {
+    .light_blue .green {
+        width: 50%;
+    }
+}
+
+@media screen and (min-width: 850px) {
+    .container {
+        width: 850px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
