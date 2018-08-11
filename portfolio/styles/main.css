@@ -1,5 +1,38 @@
 
 
+/**
+Header
+ */
+.header {
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.26);
+    min-height: 56px;
+    transition: min-height 0.3s;
+}
+.header__inner {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+.header__logo {
+    height: 72px;
+    margin-right: 1em;
+    vertical-align: top;
+    margin-top: 12px;
+    float:left;
+}
+.header__title {
+    font-weight: 300;
+    font-size: 3em;
+    margin: 0.75em 0.25em;
+    display: inline-block;
+    color: #212121;
+}
+.header__title_box {
+    float:right;
+}
+
+
+
 /*
  These are the default styles. No need to change these.
  */
@@ -14,8 +47,8 @@ body {
 }
 
 .title {
-    font-size: 2.5em;
-    text-align: center;
+    /*font-size: 2.5em;*/
+    text-align: right;
 }
 
 .box {
@@ -60,7 +93,7 @@ These are the responsive styles. Throw some breakpoints in here!
 }
 
 .color {
-    padding-top: 150px;
+    /* padding-top: 150px; */
     padding-bottom: 200px;
     width: 20%;
     display: flex;
@@ -103,3 +136,85 @@ These are the responsive styles. Throw some breakpoints in here!
         margin-right: auto;
     }
 }
+
+
+
+
+
+
+
+
+
+* {
+    border: 1px solid red !important;
+}
+
+* {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    -ms-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+.grid {
+    margin: 0 auto;
+    max-width: 1200px;
+    width: 100%;
+}
+
+.row {
+    width: 100%;
+    margin-bottom: 20px;
+    display: flex;
+}
+
+.col-1 {
+    width: 8.33%;
+}
+
+.col-2 {
+    width: 16.66%;
+}
+
+.col-3 {
+    width: 25%;
+}
+
+.col-4 {
+    width: 33.33%;
+}
+
+.col-5 {
+    width: 41.66%;
+}
+
+.col-6 {
+    width: 50%;
+}
+
+.col-7 {
+    width: 58.33%;
+}
+
+.col-8 {
+    width: 66.66%;
+}
+
+.col-9 {
+    width: 75%;
+}
+
+.col-10 {
+    width: 83.33%;
+}
+
+.col-11 {
+    width: 91.66%;
+}
+
+.col-12 {
+    width: 100%;
+}
+
+
+
