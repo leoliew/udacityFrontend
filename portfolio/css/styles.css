@@ -1,0 +1,33 @@
+
+* {
+    border: 1px solid red !important;
+    font-family: 'Lato', sans-serif;
+}
+
+body {
+    font-family: 'Lato', sans-serif;
+    color: #676858;
+    font-weight: 300;
+}
+
+.text-muted {
+    color: #bcbbbb;
+}
+
+.text-thin {
+    font-weight: 100;
+}
+
+.title-super {
+    font-size: 60px;
+}
+
+.title-logo {
+    margin-top: 20px;
+}
+
+@media screen and (max-width: 767px) {
+
+}
+
+
