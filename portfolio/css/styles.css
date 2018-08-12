@@ -1,8 +1,8 @@
 
-* {
-    border: 1px solid red !important;
-    font-family: 'Lato', sans-serif;
-}
+/** {*/
+    /*border: 1px solid red !important;*/
+    /*font-family: 'Lato', sans-serif;*/
+/*}*/
 
 body {
     font-family: 'Lato', sans-serif;
@@ -23,24 +23,47 @@ body {
 }
 
 .title-logo {
+    width: 100px;
     margin-top: 20px;
 }
 
+.main-image {
+    width: 100%;
+    padding: 10px;
+}
+
+.portfolio-image {
+    width: 100%;
+}
+
+/***** Responsive *****/
+
+/***** Extra small devices (portrait phones, less than 576px) *****/
 @media (min-width: 768px) and (max-width: 991.98px) {
     .title-super {
         font-size: 45px;
     }
 }
 
+/***** Extra small devices (portrait phones, less than 576px) *****/
 @media (min-width: 576px) and (max-width: 767.98px) {
     .title-super {
         font-size: 35px;
     }
+    .title-logo {
+        width: 70px;
+        margin-top: 10px;
+    }
 }
 
+/***** Extra small devices (portrait phones, less than 576px) *****/
 @media (max-width: 575.98px) {
     .title-super {
         font-size: 25px;
+    }
+    .title-logo {
+        width: 60px;
+        margin-top: 10px;
     }
 }
 
