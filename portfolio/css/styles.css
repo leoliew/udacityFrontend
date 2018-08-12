@@ -26,8 +26,22 @@ body {
     margin-top: 20px;
 }
 
-@media screen and (max-width: 767px) {
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .title-super {
+        font-size: 45px;
+    }
+}
 
+@media (min-width: 576px) and (max-width: 767.98px) {
+    .title-super {
+        font-size: 35px;
+    }
+}
+
+@media (max-width: 575.98px) {
+    .title-super {
+        font-size: 25px;
+    }
 }
 
 
