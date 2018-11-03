@@ -1,6 +1,42 @@
 /*
  * 创建一个包含所有卡片的数组
  */
+let card = document.querySelectorAll(".card");
+let cards = [...card]
+
+let deck = document.querySelector('.deck');
+
+function initData () {
+    // console.log(deck)
+    cards = shuffle(cards);
+    // remove all exisiting classes from each card
+    for (let i = 0; i < cards.length; i++){
+        deck.innerHTML = "";
+        cards.forEach(item=>{
+            deck.appendChild(item);
+        })
+        cards[i].classList.remove("show", "open", "match", "disabled");
+    }
+
+
+    // reset moves
+    // moves = 0;
+    // counter.innerHTML = moves;
+    // reset rating
+    // for (var i= 0; i < stars.length; i++){
+    //     stars[i].style.color = "#FFD700";
+    //     stars[i].style.visibility = "visible";
+    // }
+    //reset timer
+    // second = 0;
+    // minute = 0;
+    // hour = 0;
+    // var timer = document.querySelector(".timer");
+    // timer.innerHTML = "0 mins 0 secs";
+    // clearInterval(interval);
+}
+
+document.body.onload = initData()
 
 
 /*
@@ -11,20 +47,19 @@
  */
 
 // 洗牌函数来自于 http://stackoverflow.com/a/2450976
-function shuffle(array) {
-    var currentIndex = array.length, temporaryValue, randomIndex;
+function shuffle (array) {
+    var currentIndex = array.length, temporaryValue, randomIndex
 
     while (currentIndex !== 0) {
-        randomIndex = Math.floor(Math.random() * currentIndex);
-        currentIndex -= 1;
-        temporaryValue = array[currentIndex];
-        array[currentIndex] = array[randomIndex];
-        array[randomIndex] = temporaryValue;
+        randomIndex = Math.floor(Math.random() * currentIndex)
+        currentIndex -= 1
+        temporaryValue = array[currentIndex]
+        array[currentIndex] = array[randomIndex]
+        array[randomIndex] = temporaryValue
     }
 
-    return array;
+    return array
 }
-
 
 /*
  * 设置一张卡片的事件监听器。 如果该卡片被点击：
@@ -36,3 +71,19 @@ function shuffle(array) {
  *    + 增加移动计数器并将其显示在页面上（将这个功能放在你从这个函数中调用的另一个函数中）
  *    + 如果所有卡都匹配，则显示带有最终分数的消息（将这个功能放在你从这个函数中调用的另一个函数中）
  */
+
+
+
+// @description toggles open and show class to display cards
+var displayCard = function (){
+    this.classList.toggle("open");
+    this.classList.toggle("show");
+};
+
+// loop to add event listeners to each card
+for (var i = 0; i < cards.length; i++){
+    card = cards[i];
+    card.addEventListener("click", displayCard);
+    // card.addEventListener("click", cardOpen);
+    // card.addEventListener("click",congratulations);
+};
