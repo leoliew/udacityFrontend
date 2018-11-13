@@ -8,7 +8,7 @@ let cards = [...card]
 let deck = document.querySelector('.deck')
 
 // 已经打开的card
-let openedCards = [];
+let openedCards = []
 
 function initData () {
     // console.log(deck)
@@ -74,20 +74,44 @@ function shuffle (array) {
  *    + 如果所有卡都匹配，则显示带有最终分数的消息（将这个功能放在你从这个函数中调用的另一个函数中）
  */
 
+// TODO: 开始进行游戏函数
+
 // @description toggles open and show class to display cards
 let displayCard = function () {
     this.classList.toggle('open')
     this.classList.toggle('show')
 }
 
+let isMatch = function () {
+
+    // TODO: isMatch 将卡片锁定为 "open" 状态（将这个功能放在你从这个函数中调用的另一个函数中）
+
+    // TODO:  isMatch 函数顺带检查是否全匹配 , 显示最终分数
+
+}
+
+let countMoveStep = function () {
+
+}
+
+let notMatch = function () {
+
+    //TODO : is NotMatch 如果卡片不匹配，请将卡片从数组中移除并隐藏卡片的符号（将这个功能放在你从这个函数中调用的另一个函数中）
+
+}
+
 let cardOpen = function () {
     openedCards.push(this)
-    if(openedCards.length===2){
-        // TODO: isMatch 将卡片锁定为 "open" 状态（将这个功能放在你从这个函数中调用的另一个函数中）
-        //TODO： 在打开第一张卡片的时候开始计数器
-        // TODO:  isMatch 函数顺带检查是否全匹配
+    if (openedCards.length === 2) {
 
-        //TODO : is NotMatch 如果卡片不匹配，请将卡片从数组中移除并隐藏卡片的符号（将这个功能放在你从这个函数中调用的另一个函数中）
+        countMoveStep()
+        //TODO： 在打开第一张卡片的时候开始计数器
+        if (openedCards[0].title === openedCards[1].title) {
+            isMatch()
+        } else {
+            notMatch()
+        }
+
     }
 }
 
@@ -100,6 +124,6 @@ let playAgain = function () {
 for (let i = 0; i < cards.length; i++) {
     card = cards[i]
     card.addEventListener('click', displayCard)
-    card.addEventListener("click", cardOpen);
+    card.addEventListener('click', cardOpen)
     // card.addEventListener("click",congratulations);
 }
