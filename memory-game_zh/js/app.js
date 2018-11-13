@@ -1,23 +1,26 @@
 /*
  * 创建一个包含所有卡片的数组
  */
-let card = document.querySelectorAll(".card");
+let card = document.querySelectorAll('.card')
+
 let cards = [...card]
 
-let deck = document.querySelector('.deck');
+let deck = document.querySelector('.deck')
+
+// 已经打开的card
+let openedCards = [];
 
 function initData () {
     // console.log(deck)
-    cards = shuffle(cards);
+    cards = shuffle(cards)
     // remove all exisiting classes from each card
-    for (let i = 0; i < cards.length; i++){
-        deck.innerHTML = "";
-        cards.forEach(item=>{
-            deck.appendChild(item);
+    for (let i = 0; i < cards.length; i++) {
+        deck.innerHTML = ''
+        cards.forEach(item => {
+            deck.appendChild(item)
         })
-        cards[i].classList.remove("show", "open", "match", "disabled");
+        cards[i].classList.remove('show', 'open', 'match', 'disabled')
     }
-
 
     // reset moves
     // moves = 0;
@@ -37,7 +40,6 @@ function initData () {
 }
 
 document.body.onload = initData()
-
 
 /*
  * 显示页面上的卡片
@@ -72,18 +74,32 @@ function shuffle (array) {
  *    + 如果所有卡都匹配，则显示带有最终分数的消息（将这个功能放在你从这个函数中调用的另一个函数中）
  */
 
-
-
 // @description toggles open and show class to display cards
-var displayCard = function (){
-    this.classList.toggle("open");
-    this.classList.toggle("show");
-};
+let displayCard = function () {
+    this.classList.toggle('open')
+    this.classList.toggle('show')
+}
+
+let cardOpen = function () {
+    openedCards.push(this)
+    if(openedCards.length===2){
+        // TODO: isMatch 将卡片锁定为 "open" 状态（将这个功能放在你从这个函数中调用的另一个函数中）
+        //TODO： 在打开第一张卡片的时候开始计数器
+        // TODO:  isMatch 函数顺带检查是否全匹配
+
+        //TODO : is NotMatch 如果卡片不匹配，请将卡片从数组中移除并隐藏卡片的符号（将这个功能放在你从这个函数中调用的另一个函数中）
+    }
+}
+
+// TODO: 再次进行游戏 1.把卡片设置为关闭 2.时间重置
+let playAgain = function () {
+
+}
 
 // loop to add event listeners to each card
-for (var i = 0; i < cards.length; i++){
-    card = cards[i];
-    card.addEventListener("click", displayCard);
-    // card.addEventListener("click", cardOpen);
+for (let i = 0; i < cards.length; i++) {
+    card = cards[i]
+    card.addEventListener('click', displayCard)
+    card.addEventListener("click", cardOpen);
     // card.addEventListener("click",congratulations);
-};
+}
