@@ -7,7 +7,7 @@ let cards = [...card]
 
 let deck = document.querySelector('.deck')
 
-let matchedCards = document.querySelector('.match')
+let matchedCard = document.querySelectorAll('.match')
 
 let moves = 0
 let counter = document.querySelector('.moves')
@@ -109,7 +109,7 @@ let isMatch = function () {
 
     // TODO:  isMatch 函数顺带检查是否全匹配 , 显示最终分数
 
-    if (matchedCards.length === 16) {
+    if (matchedCard.length === 2) {
         clearInterval(interval)
         let finalTime = timer.innerHTML
 
@@ -132,6 +132,7 @@ let isMatch = function () {
 // @description close icon on modal
 function closeModal () {
     closeicon.addEventListener('click', function (e) {
+        // modal.classList.add("close")
         modal.classList.remove('show')
         startPlay()
     })
@@ -187,6 +188,8 @@ function startTimer () {
 
 let notMatch = function () {
 
+    console.log(matchedCard.length)
+
     //TODO : is NotMatch 如果卡片不匹配，请将卡片从数组中移除并隐藏卡片的符号（将这个功能放在你从这个函数中调用的另一个函数中）
 
     // openedCards[0].classList.remove('open', 'show')
@@ -213,8 +216,8 @@ let disableAllCard = function () {
 function enable () {
     Array.prototype.filter.call(cards, function (card) {
         card.classList.remove('disabled')
-        for (var i = 0; i < matchedCards.length; i++) {
-            matchedCards[i].classList.add('disabled')
+        for (var i = 0; i < matchedCard.length; i++) {
+            matchedCard[i].classList.add('disabled')
         }
     })
 }
@@ -241,7 +244,9 @@ let cardOpen = function () {
 
 // TODO: 再次进行游戏 1.把卡片设置为关闭 2.时间重置
 let playAgain = function () {
-
+    // @desciption for user to play Again
+        modal.classList.remove("show");
+        startPlay();
 }
 
 // loop to add event listeners to each card
