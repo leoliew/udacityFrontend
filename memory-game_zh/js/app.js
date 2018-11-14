@@ -7,10 +7,24 @@ let cards = [...card]
 
 let deck = document.querySelector('.deck')
 
+let matchedCards = document.querySelector('.match')
+
+let moves = 0
+let counter = document.querySelector('.moves')
+
+// declare variables for star icons
+const stars = document.querySelectorAll('.fa-star')
+
+// close icon in modal
+let closeicon = document.querySelector('.close')
+
+// declare modal
+let modal = document.getElementById('popup1')
+
 // 已经打开的card
 let openedCards = []
 
-function initData () {
+function startPlay () {
     // console.log(deck)
     cards = shuffle(cards)
     // remove all exisiting classes from each card
@@ -23,23 +37,23 @@ function initData () {
     }
 
     // reset moves
-    // moves = 0;
-    // counter.innerHTML = moves;
+    moves = 0
+    counter.innerHTML = moves
     // reset rating
-    // for (var i= 0; i < stars.length; i++){
-    //     stars[i].style.color = "#FFD700";
-    //     stars[i].style.visibility = "visible";
-    // }
-    //reset timer
-    // second = 0;
-    // minute = 0;
-    // hour = 0;
-    // var timer = document.querySelector(".timer");
-    // timer.innerHTML = "0 mins 0 secs";
-    // clearInterval(interval);
+    for (var i = 0; i < stars.length; i++) {
+        stars[i].style.color = '#FFD700'
+        stars[i].style.visibility = 'visible'
+    }
+    // reset timer
+    second = 0
+    minute = 0
+    hour = 0
+    let timer = document.querySelector('.timer')
+    timer.innerHTML = '0 mins 0 secs'
+    clearInterval(interval)
 }
 
-document.body.onload = initData()
+document.body.onload = startPlay()
 
 /*
  * 显示页面上的卡片
@@ -80,24 +94,129 @@ function shuffle (array) {
 let displayCard = function () {
     this.classList.toggle('open')
     this.classList.toggle('show')
+    this.classList.toggle('disabled')
 }
 
 let isMatch = function () {
 
     // TODO: isMatch 将卡片锁定为 "open" 状态（将这个功能放在你从这个函数中调用的另一个函数中）
+    openedCards[0].classList.add('match', 'disabled')
+    openedCards[1].classList.add('match', 'disabled')
+    openedCards[0].classList.remove('show', 'open', 'no-event')
+    openedCards[1].classList.remove('show', 'open', 'no-event')
+
+    openedCards = []
 
     // TODO:  isMatch 函数顺带检查是否全匹配 , 显示最终分数
 
+    if (matchedCards.length === 16) {
+        clearInterval(interval)
+        let finalTime = timer.innerHTML
+
+        // show congratulations modal
+        modal.classList.add('show')
+
+        // declare star rating variable
+        let starRating = document.querySelector('.stars').innerHTML
+
+        //showing move, rating, time on modal
+        document.getElementById('finalMove').innerHTML = moves
+        document.getElementById('starRating').innerHTML = starRating
+        document.getElementById('totalTime').innerHTML = finalTime
+
+        //closeicon on modal
+        closeModal()
+    }
+}
+
+// @description close icon on modal
+function closeModal () {
+    closeicon.addEventListener('click', function (e) {
+        modal.classList.remove('show')
+        startPlay()
+    })
 }
 
 let countMoveStep = function () {
+    moves++
+    counter.innerHTML = moves
+    //start timer on first click
+    if (moves == 1) {
+        second = 0
+        minute = 0
+        hour = 0
+        startTimer()
+    }
+    // setting rates based on moves
+    if (moves > 8 && moves < 12) {
+        for (i = 0; i < 3; i++) {
+            if (i > 1) {
+                stars[i].style.visibility = 'collapse'
+            }
+        }
+    }
+    else if (moves > 13) {
+        for (i = 0; i < 3; i++) {
+            if (i > 0) {
+                stars[i].style.visibility = 'collapse'
+            }
+        }
+    }
+}
 
+// @description game timer
+var second = 0, minute = 0
+hour = 0
+var timer = document.querySelector('.timer')
+var interval
+
+function startTimer () {
+    interval = setInterval(function () {
+        timer.innerHTML = minute + 'mins ' + second + 'secs'
+        second++
+        if (second == 60) {
+            minute++
+            second = 0
+        }
+        if (minute == 60) {
+            hour++
+            minute = 0
+        }
+    }, 1000)
 }
 
 let notMatch = function () {
 
     //TODO : is NotMatch 如果卡片不匹配，请将卡片从数组中移除并隐藏卡片的符号（将这个功能放在你从这个函数中调用的另一个函数中）
 
+    // openedCards[0].classList.remove('open', 'show')
+    // openedCards[1].classList.remove('open', 'show')
+    openedCards[0].classList.add('unmatched')
+    openedCards[1].classList.add('unmatched')
+    disableAllCard()
+    setTimeout(function () {
+        openedCards[0].classList.remove('show', 'open', 'no-event', 'unmatched')
+        openedCards[1].classList.remove('show', 'open', 'no-event', 'unmatched')
+        enable()
+        openedCards = []
+    }, 1100)
+
+}
+
+let disableAllCard = function () {
+    Array.prototype.filter.call(cards, function (card) {
+        card.classList.add('disabled')
+    })
+}
+
+// @description enable cards and disable matched cards
+function enable () {
+    Array.prototype.filter.call(cards, function (card) {
+        card.classList.remove('disabled')
+        for (var i = 0; i < matchedCards.length; i++) {
+            matchedCards[i].classList.add('disabled')
+        }
+    })
 }
 
 let cardOpen = function () {
@@ -106,9 +225,14 @@ let cardOpen = function () {
 
         countMoveStep()
         //TODO： 在打开第一张卡片的时候开始计数器
+        console.log(openedCards[0].title)
+        console.log(openedCards[1].title)
+
         if (openedCards[0].title === openedCards[1].title) {
+            console.log('match')
             isMatch()
         } else {
+            console.log('not match')
             notMatch()
         }
 
