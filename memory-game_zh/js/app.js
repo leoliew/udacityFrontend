@@ -19,7 +19,7 @@ let matchedCard = document.getElementsByClassName('match')
 let moves = 0
 let counter = document.querySelector('.moves')
 
-const stars = document.querySelectorAll('.fa-star')
+let stars = document.querySelectorAll('.fa-star')
 
 let closeButton = document.querySelector('.close')
 
@@ -48,7 +48,7 @@ function startPlay () {
     moves = 0
     counter.innerHTML = moves
     // 2.重置星星数为三颗
-    for (var i = 0; i < stars.length; i++) {
+    for (let i = 0; i < stars.length; i++) {
         stars[i].style.color = '#FFD700'
         stars[i].style.visibility = 'visible'
     }
@@ -191,7 +191,6 @@ let cardOpen = function () {
         if (openedCards[0].title === openedCards[1].title) {
             isMatch()
         } else {
-            console.log('not match')
             notMatch()
         }
 
