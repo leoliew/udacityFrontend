@@ -97,7 +97,7 @@ let isMatch = function () {
     openedCards[0].classList.remove('show', 'open', 'no-event')
     openedCards[1].classList.remove('show', 'open', 'no-event')
     openedCards = []
-    if (matchedCard.length === 2) {
+    if (matchedCard.length === 16) {
         clearInterval(interval)
         let finalTime = timer.innerHTML
         modal.classList.add('show')
@@ -186,7 +186,7 @@ function enable () {
 // 打开卡片,在第一次进行匹配的时候开始计数器
 let cardOpen = function () {
     openedCards.push(this)
-    if (openedCards.length === 16) {
+    if (openedCards.length === 2) {
         countMoveStep()
         if (openedCards[0].title === openedCards[1].title) {
             isMatch()
