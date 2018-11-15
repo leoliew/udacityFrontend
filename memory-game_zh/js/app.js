@@ -146,7 +146,7 @@ let countMoveStep = function () {
 // 开始计时
 function startTimer () {
     interval = setInterval(function () {
-        timer.innerHTML = minute + ' minutes ' + second % 60 + ' seconds'
+        timer.innerHTML = `${minute} minutes ${second % 60} seconds`
         second++
         minute = parseInt(second / 60)
     }, 1000)
@@ -168,19 +168,19 @@ let notMatch = function () {
 
 // 把所有的卡片设置为不能点击
 let disableAllCard = function () {
-    Array.prototype.filter.call(cards, function (card) {
-        card.classList.add('disabled')
+    cards.forEach(function (card, index) {
+        cards[index].classList.add('disabled')
     })
 }
 
 // 把剩余未匹配的卡片设置为可点击
 function enable () {
-    Array.prototype.filter.call(cards, function (card) {
-        card.classList.remove('disabled')
-        for (let i = 0; i < matchedCard.length; i++) {
-            matchedCard[i].classList.add('disabled')
-        }
+    cards.forEach(function (card, index) {
+        cards[index].classList.remove('disabled')
     })
+    for (let i = 0; i < matchedCard.length; i++) {
+        matchedCard[i].classList.add('disabled')
+    }
 }
 
 // 打开卡片,在第一次进行匹配的时候开始计数器
