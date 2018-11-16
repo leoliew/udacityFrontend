@@ -1,6 +1,7 @@
 # udacityFrontend
 
-  * [博客文章](https://github.com/leoliew/udacityFrontend/tree/master/mockup-to-article_zh)
-  * [动物交换卡](https://github.com/leoliew/udacityFrontend/tree/master/animal-trading-cards_zh)
-  * [个人作品集](https://github.com/leoliew/udacityFrontend/tree/master/portfolio)
-  * [记忆游戏](https://github.com/leoliew/udacityFrontend/tree/master/memory-game_zh)
+  * [博客文章](http://www.leoliew.me/udacityFrontend/mockup-to-article_zh/card.html)
+  * [动物交换卡](http://www.leoliew.me/udacityFrontend/mockup-to-article_zh/index.html)
+  * [个人作品集](http://www.leoliew.me/udacityFrontend/portfolio/index.html)
+  * [记忆游戏](http://www.leoliew.me/udacityFrontend/memory-game_zh/index.html)
+
