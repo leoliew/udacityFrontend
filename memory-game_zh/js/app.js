@@ -19,7 +19,7 @@ let matchedCard = document.getElementsByClassName('match')
 let moves = 0
 let counter = document.querySelector('.moves')
 
-const stars = document.querySelectorAll('.fa-star')
+let stars = document.querySelectorAll('.fa-star')
 
 let closeButton = document.querySelector('.close')
 
@@ -48,7 +48,7 @@ function startPlay () {
     moves = 0
     counter.innerHTML = moves
     // 2.重置星星数为三颗
-    for (var i = 0; i < stars.length; i++) {
+    for (let i = 0; i < stars.length; i++) {
         stars[i].style.color = '#FFD700'
         stars[i].style.visibility = 'visible'
     }
@@ -146,7 +146,7 @@ let countMoveStep = function () {
 // 开始计时
 function startTimer () {
     interval = setInterval(function () {
-        timer.innerHTML = minute + ' minutes ' + second % 60 + ' seconds'
+        timer.innerHTML = `${minute} minutes ${second % 60} seconds`
         second++
         minute = parseInt(second / 60)
     }, 1000)
@@ -168,19 +168,19 @@ let notMatch = function () {
 
 // 把所有的卡片设置为不能点击
 let disableAllCard = function () {
-    Array.prototype.filter.call(cards, function (card) {
-        card.classList.add('disabled')
+    cards.forEach(function (card, index) {
+        cards[index].classList.add('disabled')
     })
 }
 
 // 把剩余未匹配的卡片设置为可点击
 function enable () {
-    Array.prototype.filter.call(cards, function (card) {
-        card.classList.remove('disabled')
-        for (let i = 0; i < matchedCard.length; i++) {
-            matchedCard[i].classList.add('disabled')
-        }
+    cards.forEach(function (card, index) {
+        cards[index].classList.remove('disabled')
     })
+    for (let i = 0; i < matchedCard.length; i++) {
+        matchedCard[i].classList.add('disabled')
+    }
 }
 
 // 打开卡片,在第一次进行匹配的时候开始计数器
@@ -191,7 +191,6 @@ let cardOpen = function () {
         if (openedCards[0].title === openedCards[1].title) {
             isMatch()
         } else {
-            console.log('not match')
             notMatch()
         }
 
